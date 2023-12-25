@@ -1,0 +1,33 @@
+{
+  "name": "shift-selector",
+  "version": "1.0.0",
+  "description": "An range-selector of checkboxes. Simply shift+click from point A to B.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasBulai/shift-selector.git"
+  },
+  "keywords": [
+    "javascript",
+    "vanilla-javascript",
+    "range",
+    "select",
+    "checkbox"
+  ],
+  "author": "Tobias Bulai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TobiasBulai/shift-selector/issues"
+  },
+  "homepage": "https://github.com/TobiasBulai/shift-selector#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.5.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
