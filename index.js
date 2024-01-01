@@ -56,4 +56,4 @@ const shiftSelect = (element = undefined) => {
   }
 }
 
-// export default shiftSelect
+export default shiftSelect
