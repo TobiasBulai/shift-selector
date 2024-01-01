@@ -1,16 +1,24 @@
 // eslint-disable-next-line no-unused-vars
 const shiftSelect = (element = undefined) => {
-  let firstNode
-  let lastNode
+  const selectedNodes = []
 
   const getNodeIndex = (nodeList, node) => {
     return Array.prototype.indexOf.call(nodeList, node)
   }
 
-  const markRange = (firstNode, lastNode, state, nodeList) => {
-    if (firstNode !== undefined && lastNode !== undefined) {
-      const firstIndex = getNodeIndex(nodeList, firstNode)
-      const lastIndex = getNodeIndex(nodeList, lastNode)
+  const addToNodeList = (index, node) => {
+    if (selectedNodes.length === 2) {
+      selectedNodes.shift()
+    }
+
+    selectedNodes.push({ index, node })
+  }
+
+  const markRange = (state, nodeList) => {
+    if (selectedNodes.length === 2) {
+      const [firstIndex, lastIndex] = (selectedNodes[0].index > selectedNodes[1].index)
+        ? [selectedNodes[1].index, selectedNodes[0].index]
+        : [selectedNodes[0].index, selectedNodes[1].index]
 
       for (let i = 0; i < nodeList.length; i++) {
         if (i <= firstIndex || i >= lastIndex) {
@@ -25,31 +33,11 @@ const shiftSelect = (element = undefined) => {
   const shiftSelectFunc = (nodeList) => {
     nodeList.forEach(checkbox => {
       checkbox.addEventListener('click', function (event) {
-        const selectedNodeIndex = getNodeIndex(nodeList, this)
-
-        if (firstNode !== undefined) {
-          const firstNodeIndex = getNodeIndex(nodeList, firstNode)
-
-          if (selectedNodeIndex > firstNodeIndex) {
-            if (lastNode !== undefined) {
-              const currentLastNodeIndex = getNodeIndex(nodeList, lastNode)
-              const currentNodeIndex = getNodeIndex(nodeList, this)
-
-              if (currentLastNodeIndex < currentNodeIndex) {
-                lastNode = this
-              }
-            } else {
-              lastNode = this
-            }
-          } else {
-            firstNode = this
-          }
-        } else {
-          firstNode = this
-        }
+        addToNodeList(getNodeIndex(nodeList, this), this)
 
         if (event.shiftKey) {
-          markRange(firstNode, lastNode, this.checked, nodeList)
+          markRange(this.checked, nodeList)
+          return () => null
         }
       })
     })
@@ -68,4 +56,4 @@ const shiftSelect = (element = undefined) => {
   }
 }
 
-export default shiftSelect
+// export default shiftSelect

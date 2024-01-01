@@ -1,7 +1,7 @@
 {
   "name": "shift-selector",
   "version": "1.0.0",
-  "description": "An range-selector of checkboxes. Simply shift+click from point A to B.",
+  "description": "An range-selector for checkboxes. Simply shift+click from point A to B.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
