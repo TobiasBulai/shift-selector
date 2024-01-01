@@ -32,7 +32,6 @@ Or if you have a simple page without Node or similar environment, just remove th
   </form>
   <script src="index.js"></script>
   <script>
-    // I'm now enabled on this specific form and nothing else!
     shiftSelect()
   </script>
 </body>
